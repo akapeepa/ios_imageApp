@@ -9,12 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    var isRealFc  = true;
+    @objc func change_logo(){
+        if isRealFc == true {
+            imageView.image = UIImage(named:"real_fc_logo")
+            isRealFc = false
+        }else{
+            imageView.image = UIImage(named:"psg_logo")
+            isRealFc = true;
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    imageView.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self, action:#selector(change_logo) )
+        imageView.addGestureRecognizer(gesture)
     }
 
-
+    
+    @IBOutlet weak var imageView: UIImageView!
 }
 
